@@ -1,0 +1,163 @@
+﻿
+@{
+    ViewBag.Title = "JSExercise";
+}
+
+@*<style>
+    input{
+        max-width: 50px;
+    }
+</style>*@
+
+<h2>JSExercise</h2>
+
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">
+                    Please tour my JS Exercises and contact me if you have any questions.
+                </h4>
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-pills">
+                    <li class="active"><a data-toggle="pill" href="#math">Math</a></li>
+                    <li><a data-toggle="pill" href="#palindrome">Palidrome</a></li>
+                    <li><a data-toggle="pill" href="#factorial">Factorial</a></li>
+                    <li><a data-toggle="pill" href="#fizzbuzz">Fizz-Buzz</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="math" class="tab-pane fade in active">
+                        @*This is where I can start using the BS Grid system
+                            and jQuery to lay out my UI*@
+                        <div class="row">
+                            <div class="col-md-12">
+                                Hello and welcome to the Fun With Math JS Exercise. Please enter 5 integers and I will perform a few mathematical operations.
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-6">Enter number 1:</div>
+                                    <div class="col-md-6">
+                                        <input id="input1" type="number" @*class="form-control"*@/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">Enter number 2:</div>
+                                    <div class="col-md-6">
+                                        <input id="input2" type="number" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">Enter number 3:</div>
+                                    <div class="col-md-6">
+                                        <input id="input3" type="number" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">Enter number 4:</div>
+                                    <div class="col-md-6">
+                                        <input id="input4" type="number" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">Enter number 5:</div>
+                                    <div class="col-md-6">
+                                        <input id="input5" type="number" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <button id="btnmath" class="btn btn-primary">Click Me</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p id="sum"></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p id="product"></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p id="smallest"></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p id="largest"></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p id="average"></p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="palindrome" class="tab-pane fade">
+                        <h3>Palindrome</h3>
+                        <p>Some content in Palindrome.</p>
+                    </div>
+                    <div id="factorial" class="tab-pane fade">
+                        <h3>Factorial</h3>
+                        <p>Some content in Factorial</p>
+                    </div>
+                    <div id="fizzbuzz" class="tab-pane fade">
+                        <h3>Fizz-Buzz</h3>
+                        <p>Some content in Fizz-Buzz</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section scripts {
+
+    <script>
+        $("#btnmath").click(function () {
+            //First we need to get the user input
+            var num1 = Number($("#input1").val());
+            var num2 = Number($("#input2").val());
+            var num3 = Number($("#input3").val());
+            var num4 = Number($("#input4").val());
+            var num5 = Number($("#input5").val());
+
+            //next we need to perform the necessary calculations
+            var sum = num1 + num2 + num3 + num4 + num5;
+            var product = num1 * num2 * num3 * num4 * num5;
+            var average = sum / 5;
+            var smallest = Math.min(num1, num2, num3, num4, num5);
+            var largest = Math.max(num1, num2, num3, num4, num5);
+
+            //finally we need to output the results
+            $("#sum").text("The sum is: " + sum);
+            $("#product").text("The product is: " + product);
+            $("#average").text("The average is: " + average);
+            $("#smallest").text("The smallest number is: " + smallest);
+            $("#largest").text("The largest number is: " + largest);
+        });
+    </script>
+
+
+}
+
