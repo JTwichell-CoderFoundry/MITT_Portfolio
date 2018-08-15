@@ -1,13 +1,6 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "JSExercise";
 }
-
-@*<style>
-    input{
-        max-width: 50px;
-    }
-</style>*@
 
 <h2>JSExercise</h2>
 
@@ -104,9 +97,7 @@
                                         <p id="average"></p>
                                     </div>
                                 </div>
-
                             </div>
-
                         </div>
                     </div>
                     <div id="palindrome" class="tab-pane fade">
@@ -118,16 +109,48 @@
                         <p>Some content in Factorial</p>
                     </div>
                     <div id="fizzbuzz" class="tab-pane fade">
-                        <h3>Fizz-Buzz</h3>
-                        <p>Some content in Fizz-Buzz</p>
+                        <div class="row">
+                            <div class="col-md-12">
+                                Please enter 2 integers and I will run through the classic Fizz-Buzz exercise. This exercise relies mainly on the modulus operator to determine whether to print Fizz, Buzz or FizzBuzz based on the value of the loop counter mod the user input.
+                            </div>
+                        </div>
+                        <div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        Enter number 1:
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="number" id="fbnum1" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        Enter number 2:
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="number" id="fbnum2" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <button type="button" id="btnfb" class="btn btn-primary btn-lg">Click Me</button>
+                                </div>
+                                @*<div class="row">
+                                    <button type="button" id="btnclear" class="btn btn-primary btn-lg">Clear</button>
+                                </div>*@
+                            </div>
+                            <div class="col-md-6">
+                                <p id="fbout"></p>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" id="btnclose" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -156,8 +179,52 @@
             $("#smallest").text("The smallest number is: " + smallest);
             $("#largest").text("The largest number is: " + largest);
         });
+
+        $("#btnfb").click(function () {
+            //Step 1: get the information from the user
+            var num1 = Number($("#fbnum1").val());
+            var num2 = Number($("#fbnum2").val());
+
+            //var numbers = [];
+            var output = "";
+
+            //Step 2: Perform the algorithm
+            for (var loop = 1; loop <= 100; loop++) {
+                //Here is where we determine whether to print Fizz, Buzz, FizzBuzz or the loop counter
+                if (loop % num1 == 0 && loop % num2 == 0) {
+                    //$("#fbout").text("FizzBuzz");
+                    //numbers.push("FizzBuzz");
+                    output += "FizzBuzz, ";
+                }
+                else if (loop % num1 == 0) {
+                    //$("#fbout").text("Fizz");
+                    //numbers.push("Fizz");
+                    output += "Fizz, ";
+                }
+                else if (loop % num2 == 0) {
+                    //$("#fbout").text("Buzz");
+                    //numbers.push("Buzz");
+                    output += "Buzz, ";
+                }
+                else {
+                    //$("#fbout").text(loop);
+                    //numbers.push(loop);
+                    output += loop + ", ";
+                }
+            }
+
+            //Step 3: Output the result
+            //var output = numbers.join(', ');
+            $("#fbout").text(output.substring(0, output.length -2));
+        });
+
+        $("#btnclose").click(function () {
+            //Clear the information from the screen
+            $("#fbnum1").val("");
+            $("#fbnum2").val("");
+            $("#fbout").text("");
+        });
+
     </script>
-
-
 }
 
