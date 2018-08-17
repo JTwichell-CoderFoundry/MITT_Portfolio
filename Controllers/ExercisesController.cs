@@ -13,5 +13,10 @@ namespace MITT_Portfolio.Controllers
         {
             return View();
         }
+
+        public ActionResult Demo()
+        {
+            return View();
+        }
     }
 }

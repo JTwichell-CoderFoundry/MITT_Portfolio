@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Demo";
+}
+
+<style>
+    #horizontal > li {
+        display: inline-block;
+        zoom: 2;
+    }
+
+    .header::after {
+        content: "";
+        background: url("../../img/portfolio/cabin.png");
+        opacity: 0.5;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        z-index: -1;
+    }
+</style>
+<div class="header">
+    <h1>THIS IS A TEST OF A SEMI TRANSPARENT BACKGROUND</h1>
+</div>
